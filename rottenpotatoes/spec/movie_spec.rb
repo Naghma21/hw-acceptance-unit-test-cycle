@@ -64,9 +64,9 @@ describe MoviesController, :type => :controller do
     
     describe "create" do
         it "create movie " do
-            @movie = {title: "New_Movie", rating: "R"}
+            @movie = {title: "Hello", rating: "PG"}
             post :create, movie: @movie
-            expect(flash[:notice]).to eq("New_Movie was successfully created.")
+            expect(flash[:notice]).to eq("Hello was successfully created.")
             expect(response).to redirect_to(movies_path)
         end
     end
