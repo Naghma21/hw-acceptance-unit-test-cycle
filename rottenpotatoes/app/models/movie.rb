@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
     movie=self.find(id)
     #movies=Movie.where(director: movie.director).where.not(id: id)
     movies=Movie.where(director: movie.director)
-    if(movie.director.empty?)
+    if(movie.director==nil)
       return [movies,1,movie]
     else
       return [movies,0,movie]
