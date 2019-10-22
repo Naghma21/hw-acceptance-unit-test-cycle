@@ -4,11 +4,12 @@ class Movie < ActiveRecord::Base
   end
   def self.find_similar_movies(id)
     movie=self.find(id)
-    sad_path=0
-    movies=Movie.where(director: movie.director).where.not(id: id)
-    if((not movie.director) or (movies.length==0))
-      sad_path=1
+    #movies=Movie.where(director: movie.director).where.not(id: id)
+    movies=Movie.where(director: movie.director)
+    if(movie.director.empty?)
+      return [[],1,movie]
+    else
+      return [movies,0,movie]
     end
-    return [movies,sad_path,movie]
   end
 end
